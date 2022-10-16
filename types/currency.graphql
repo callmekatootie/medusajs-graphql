@@ -1,0 +1,7 @@
+type Currency {
+  code: String
+  includes_tax: String
+  name: String
+  symbol: String
+  symbol_native: String
+}

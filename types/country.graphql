@@ -1,0 +1,9 @@
+type Country {
+  id: ID
+  display_name: String
+  iso_2: String
+  iso_3: String
+  name: String
+  num_code: String
+  region_id: ID
+}

@@ -1,0 +1,23 @@
+type Region {
+  id: ID
+  automatic_taxes: Boolean
+  countries: [Country]
+  currency_code: String
+  created_at: String
+  deleted_at: String
+  fulfillment_providers: [FulfillmentProvider]
+  gift_cards_taxable: Boolean
+  includes_tax: Boolean
+  metadata: String
+  name: String
+  payment_providers: [PaymentProvider]
+  tax_code: String
+  tax_provider_id: ID
+  tax_rate: Int
+  updated_at: String
+}
+
+type Query {
+  getRegion(id: ID!): Region
+  listRegions(offset: Int, limit: Int, created_at: DateComparison, updated_at: DateComparison): [Region!]!
+}

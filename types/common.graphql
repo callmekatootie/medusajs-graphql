@@ -1,0 +1,6 @@
+input DateComparison {
+  lt: String
+  gt: String
+  lte: String
+  gte: String
+}
