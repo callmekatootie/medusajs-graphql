@@ -1,7 +1,20 @@
 type Currency {
   code: String
-  includes_tax: String
+  includes_tax: Boolean
   name: String
   symbol: String
   symbol_native: String
+}
+
+type Query {
+  listCurrencies(code: String, includes_tax: Boolean, order:String, offset: Int, limit: Int): [Currency!]!
+}
+
+input UpdateCurrencyInput {
+  code: String!
+  includes_tax: Boolean
+}
+
+type Mutation {
+  updateCurrency(input: UpdateCurrencyInput): Currency
 }

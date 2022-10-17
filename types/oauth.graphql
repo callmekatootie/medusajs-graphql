@@ -1,0 +1,8 @@
+type Oauth {
+  id: ID
+  application_name: String
+  data: String
+  display_name: String
+  install_url: String
+  uninstall_url: String
+}

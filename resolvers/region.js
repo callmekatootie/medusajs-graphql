@@ -1,19 +1,15 @@
-let axios = require('axios').default
+const { store } = require('../common/axios')
 const { GraphQLYogaError } = require('@graphql-yoga/node')
-
-// https://github.com/axios/axios/issues/5044
-if (!axios) {
-  axios = require('axios')
-}
 
 module.exports = {
   Query: {
     async getRegion (parent, args, context, info) {
       const { id } = args
 
-      const res = await axios.get(`http://localhost:9000/store/regions/${id}`)
+      const res = await store.get(`/regions/${id}`)
 
       return res.data.region
+      // TODO - Handle 404 if id not found
     },
 
     async listRegions (parent, args, context, info) {
@@ -33,7 +29,7 @@ module.exports = {
         throw new GraphQLYogaError('created_at or updated_at filter properties are not yet supported')
       }
 
-      const res = await axios.get('http://localhost:9000/store/regions', { params })
+      const res = await store.get('/regions', { params })
 
       return res.data.regions
     }

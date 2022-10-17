@@ -1,0 +1,4 @@
+type NotificationProvider {
+  id: ID
+  is_installed: Boolean
+}

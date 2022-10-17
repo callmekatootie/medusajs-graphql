@@ -1,0 +1,12 @@
+type IdempotencyKey {
+  id: ID
+  created_at: String
+  idempotency_key: String
+  locked_at: String
+  recovery_point: String
+  response_body: String
+  response_code: Int
+  request_method: String
+  request_params: String
+  request_path: String
+}

@@ -1,0 +1,13 @@
+type ReturnReason {
+  id: ID
+  created_at: String
+  deleted_at: String
+  description: String
+  label: String
+  metadata: String
+  parent_return_reason: ReturnReason
+  parent_return_reason_id: ID
+  return_reason_children: ReturnReason
+  updated_at: String
+  value: String
+}

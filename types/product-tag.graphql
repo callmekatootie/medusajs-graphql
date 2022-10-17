@@ -1,0 +1,7 @@
+type ProductTag {
+  id: ID
+  created_at: String
+  deleted_at: String
+  metadata: String
+  updated_at: String
+}
