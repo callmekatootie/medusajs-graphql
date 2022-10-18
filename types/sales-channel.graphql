@@ -1,0 +1,56 @@
+type SalesChannel {
+  id: ID
+  created_at: String
+  deleted_at: String
+  description: String
+  is_disabled: Boolean
+  name: String
+  updated_at: String
+}
+
+type Query {
+  getSalesChannel(id: ID!): SalesChannel
+  listSalesChannels(
+    id: ID
+    name: String
+    description: String
+    q: String
+    order: String
+    created_at: DateComparison
+    updated_at: DateComparison
+    deleted_at: DateComparison
+    offset: Int
+    limit: Int
+    expand: String
+    fields: String
+  ): [SalesChannel!]!
+}
+
+input CreateSalesChannelInput {
+  name: String!
+  description: String
+  is_disabled: Boolean
+}
+
+input UpdateSalesChannelInput {
+  id: ID!
+  name: String
+  description: String
+  is_disabled: Boolean
+}
+
+input DeleteSalesChannelInput {
+  id: ID!
+}
+
+type DeleteSalesChannelResponse {
+  id: ID
+  object: String
+  deleted: Boolean
+}
+
+type Mutation {
+  createSalesChannel(input: CreateSalesChannelInput): SalesChannel
+  updateSalesChannel(input: UpdateSalesChannelInput): SalesChannel
+  deleteSalesChannel(input: DeleteSalesChannelInput): DeleteSalesChannelResponse
+}

@@ -13,21 +13,22 @@ module.exports = {
     },
 
     async listRegions (parent, args, context, info) {
-      const { offset, limit, created_at: createdAt, updated_at: updatedAt } = args
+      if (args.createdAt || args.updatedAt) {
+        throw new GraphQLYogaError('created_at or updated_at filter properties are not yet supported')
+      }
 
       const params = {}
 
-      if (offset) {
-        params.offset = offset
-      }
+      const fields = [
+        'offset',
+        'limit'
+      ]
 
-      if (limit) {
-        params.limit = limit
-      }
-
-      if (createdAt || updatedAt) {
-        throw new GraphQLYogaError('created_at or updated_at filter properties are not yet supported')
-      }
+      fields.forEach(f => {
+        if (args[f]) {
+          params[f] = args[f]
+        }
+      })
 
       const res = await store.get('/regions', { params })
 
