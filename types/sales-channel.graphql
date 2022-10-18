@@ -12,31 +12,31 @@ type Query {
   getSalesChannel(id: ID!): SalesChannel
   listSalesChannels(
     id: ID
-    name: String
-    description: String
-    q: String
-    order: String
     created_at: DateComparison
-    updated_at: DateComparison
     deleted_at: DateComparison
-    offset: Int
-    limit: Int
+    description: String
     expand: String
     fields: String
+    limit: Int
+    name: String
+    offset: Int
+    order: String
+    q: String
+    updated_at: DateComparison
   ): [SalesChannel!]!
 }
 
 input CreateSalesChannelInput {
-  name: String!
   description: String
   is_disabled: Boolean
+  name: String!
 }
 
 input UpdateSalesChannelInput {
   id: ID!
-  name: String
   description: String
   is_disabled: Boolean
+  name: String
 }
 
 input DeleteSalesChannelInput {
@@ -45,12 +45,16 @@ input DeleteSalesChannelInput {
 
 type DeleteSalesChannelResponse {
   id: ID
-  object: String
   deleted: Boolean
+  object: String
 }
 
 type Mutation {
   createSalesChannel(input: CreateSalesChannelInput): SalesChannel
-  updateSalesChannel(input: UpdateSalesChannelInput): SalesChannel
   deleteSalesChannel(input: DeleteSalesChannelInput): DeleteSalesChannelResponse
+  updateSalesChannel(input: UpdateSalesChannelInput): SalesChannel
 }
+
+# TODO
+# - Add a Product Mutation
+# - Delete a Product Mutation

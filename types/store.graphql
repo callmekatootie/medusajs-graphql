@@ -1,0 +1,45 @@
+type Store {
+  id: ID
+  created_at: String
+  currencies: [Currency!]!
+  default_currency: Currency
+  default_currency_code: String
+  default_sales_channel: SalesChannel
+  default_sales_channel_id: String
+  invite_link_template: String
+  metadata: String
+  name: String
+  payment_link_template: String
+  swap_link_template: String
+  updated_at: String
+}
+
+type Query {
+  getStore: Store
+  listPaymentProviders: [PaymentProvider!]!
+  listTaxProviders: [TaxProvider!]!
+}
+
+input AddCurrencyCodeInput {
+  code: String
+}
+
+input DeleteCurrencyCodeInput {
+  code: String
+}
+
+input UpdateStoreInput {
+  name: String
+  swap_link_template: String
+  payment_link_template: String
+  invite_link_template: String
+  default_currency_code: String
+  currencies: [String]
+  metadata: String
+}
+
+type Mutation {
+  addCurrencyCode(input: AddCurrencyCodeInput): Store
+  deleteCurrencyCode(input: DeleteCurrencyCodeInput): Store
+  updateStore(input: UpdateStoreInput): Store
+}

@@ -1,5 +1,5 @@
-const { store } = require('../common/axios')
 const { GraphQLYogaError } = require('@graphql-yoga/node')
+const { store } = require('../common/axios')
 
 module.exports = {
   Query: {
@@ -8,7 +8,13 @@ module.exports = {
 
       const res = await store.get(`/regions/${id}`)
 
-      return res.data.region
+      let metadata
+
+      if (res.data.region.metadata) {
+        metadata = JSON.stringify(res.data.store.metadata)
+      }
+
+      return { ...res.data.region, metadata }
       // TODO - Handle 404 if id not found
     },
 
@@ -31,6 +37,12 @@ module.exports = {
       })
 
       const res = await store.get('/regions', { params })
+
+      res.data.regions.forEach(r => {
+        if (r.metadata) {
+          r.metadata = JSON.stringify(r.metadata)
+        }
+      })
 
       return res.data.regions
     }

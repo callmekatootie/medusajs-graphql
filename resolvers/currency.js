@@ -1,5 +1,5 @@
-const { admin } = require('../common/axios')
 const { GraphQLYogaError } = require('@graphql-yoga/node')
+const { admin } = require('../common/axios')
 
 module.exports = {
   Query: {
