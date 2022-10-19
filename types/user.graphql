@@ -1,0 +1,62 @@
+enum UserRole {
+  ADMIN
+  MEMBER
+  DEVELOPER
+}
+
+type User {
+  id: ID!
+  api_token: String
+  created_at: String
+  deleted_at: String
+  email: String
+  first_name: String
+  last_name: String
+  metadata: String
+  role: UserRole
+  updated_at: String
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers: [User!]!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  first_name: String
+  last_name: String
+  role: UserRole
+}
+
+input DeleteUserInput {
+  id: ID!
+}
+
+input UpdateUserInput {
+  id: ID!
+  first_name: String
+  last_name: String
+  role: UserRole
+  api_token: String
+  metadata: String
+}
+
+input ResetPasswordInput {
+  token: String!
+  password: String!
+  email: String
+}
+
+input RequestPasswordResetInput {
+  email: String!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput): User
+  deleteUser(input: DeleteUserInput): DeletionResponse
+  resetPassword(input: ResetPasswordInput): User
+  requestPasswordReset(input: RequestPasswordResetInput): NoContentResponse
+  updateUser(input: UpdateUserInput): User
+}

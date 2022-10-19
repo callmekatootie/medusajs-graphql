@@ -54,7 +54,13 @@ module.exports = {
 
       const res = await admin.post('/return-reasons', { ...input })
 
-      return res.data.return_reason
+      let metadata
+
+      if (res.data.return_reason.metadata) {
+        metadata = JSON.stringify(res.data.return_reason.metadata)
+      }
+
+      return { ...res.data.return_reason, metadata }
     },
 
     async updateReturnReason (parent, args, context, info) {
@@ -70,7 +76,13 @@ module.exports = {
 
       const res = await admin.post(`/return-reasons/${id}`, { ...others })
 
-      return res.data.return_reason
+      let metadata
+
+      if (res.data.return_reason.metadata) {
+        metadata = JSON.stringify(res.data.return_reason.metadata)
+      }
+
+      return { ...res.data.return_reason, metadata }
     },
 
     async deleteReturnReason (parent, args, context, info) {

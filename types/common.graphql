@@ -12,3 +12,7 @@ type DeletionResponse {
   deleted: Boolean
   object: String
 }
+
+type NoContentResponse {
+  success: Boolean
+}
