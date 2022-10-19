@@ -43,15 +43,9 @@ input DeleteSalesChannelInput {
   id: ID!
 }
 
-type DeleteSalesChannelResponse {
-  id: ID
-  deleted: Boolean
-  object: String
-}
-
 type Mutation {
   createSalesChannel(input: CreateSalesChannelInput): SalesChannel
-  deleteSalesChannel(input: DeleteSalesChannelInput): DeleteSalesChannelResponse
+  deleteSalesChannel(input: DeleteSalesChannelInput): DeletionResponse
   updateSalesChannel(input: UpdateSalesChannelInput): SalesChannel
 }
 

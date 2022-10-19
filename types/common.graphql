@@ -1,6 +1,14 @@
+# Used to filter by created_at, updated_at
 input DateComparison {
   lt: String
   gt: String
   lte: String
   gte: String
+}
+
+# Used in response of a delete request
+type DeletionResponse {
+  id: ID
+  deleted: Boolean
+  object: String
 }

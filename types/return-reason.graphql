@@ -7,7 +7,38 @@ type ReturnReason {
   metadata: String
   parent_return_reason: ReturnReason
   parent_return_reason_id: ID
-  return_reason_children: ReturnReason
+  return_reason_children: [ReturnReason!]!
   updated_at: String
   value: String
+}
+
+type Query {
+  getReturnReason(id: ID!): ReturnReason
+  listReturnReasons: [ReturnReason]!
+}
+
+input CreateReturnReasonInput {
+  description: String!
+  label: String!
+  metadata: String
+  parent_return_reason_id: ID
+  value: String!
+}
+
+input UpdateReturnReasonInput {
+  id: ID!
+  description: String
+  label: String
+  metadata: String
+  value: String
+}
+
+input DeleteReturnReasonInput {
+  id: ID!
+}
+
+type Mutation {
+  createReturnReason(input: CreateReturnReasonInput): ReturnReason
+  deleteReturnReason(input: DeleteReturnReasonInput): DeletionResponse
+  updateReturnReason(input: UpdateReturnReasonInput): ReturnReason
 }
