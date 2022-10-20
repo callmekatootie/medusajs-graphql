@@ -8,7 +8,7 @@ module.exports = {
         throw new GraphQLYogaError('order filter property is not yet supported')
       }
 
-      if (args.createdAt || args.updatedAt || args.deletedAt) {
+      if (args.created_at || args.updated_at || args.deleted_at) {
         throw new GraphQLYogaError('created_at or updated_at or deleted_at property is not yet supported')
       }
 

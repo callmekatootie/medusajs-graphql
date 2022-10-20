@@ -7,3 +7,7 @@
 
 - [ ] Currencies | Update a Currency currently fails | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/3)
 - [ ] Store | Delete a Currency Code does not work | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/4)
+
+### Others
+
+- [ ] Product Collections | List product collections does not return metadata | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/5)
