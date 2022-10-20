@@ -45,4 +45,6 @@ type Mutation {
   createProductCollection(input: CreateProductCollectionInput): ProductCollection
   deleteProductCollection(input: DeleteProductCollectionInput): DeletionResponse
   updateProductCollection(input: UpdateProductCollectionInput): ProductCollection
+  # TODO
+  # Mutations for adding and removing products from the collection
 }

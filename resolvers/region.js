@@ -1,5 +1,5 @@
 const { GraphQLYogaError } = require('@graphql-yoga/node')
-const { store } = require('../common/axios')
+const { store, admin } = require('../common/axios')
 
 module.exports = {
   Query: {
@@ -45,6 +45,24 @@ module.exports = {
       })
 
       return res.data.regions
+    }
+  },
+
+  Mutation: {
+    async addCountry (parent, args, context, info) {
+      const { input: { id, ...others }} = args
+
+      const res = await admin.post(`/regions/${id}/countries`, { ...others })
+
+      let metadata
+
+      if (res.data.region.metadata) {
+        metadata = JSON.stringify(res.data.region.metadata)
+      }
+
+      console.log(JSON.stringify(res.data))
+
+      return { ...res.data.region, metadata }
     }
   }
 }

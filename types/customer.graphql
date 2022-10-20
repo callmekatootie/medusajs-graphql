@@ -1,0 +1,29 @@
+type Customer {
+  id: ID!
+  # TODO - Implement once Billing address gets defined
+  # billing_address: BillingAddress
+  billing_address_id: ID
+  created_at: String
+  deleted_at: String
+  email: String!
+  first_name: String!
+  has_account: Boolean
+  last_name: String!
+  metadata: String
+  phone: String
+  # TODO - Implement once Shipping address gets defined
+  # shipping_addresses: [ShippingAddress!]!
+  updated_at: String
+}
+
+input CreateCustomerInput {
+  email: String!
+  first_name: String!
+  last_name: String!
+  password: String!
+  phone: String
+}
+
+type Mutation {
+  createCustomer(input: CreateCustomerInput): Customer
+}

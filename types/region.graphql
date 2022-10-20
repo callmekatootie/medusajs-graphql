@@ -21,3 +21,12 @@ type Query {
   getRegion(id: ID!): Region
   listRegions(offset: Int, limit: Int, created_at: DateComparison, updated_at: DateComparison): [Region!]!
 }
+
+input AddCountryInput {
+  id: ID!
+  country_code: String!
+}
+
+type Mutation {
+  addCountry(input: AddCountryInput): Region
+}

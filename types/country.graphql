@@ -6,4 +6,5 @@ type Country {
   name: String
   num_code: String
   region_id: ID
+  region: Region
 }
