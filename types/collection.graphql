@@ -1,0 +1,23 @@
+type Collection {
+  id: ID!
+  created_at: String
+  deleted_at: String
+  handle: String
+  metadata: String
+  # TODO
+  # products: [Product!]!
+  title: String!
+  updated_at: String
+}
+
+type ListCollection {
+  collections: [Collection!]!
+  count: Int
+  limit: Int
+  offset: Int
+}
+
+type Query {
+  getCollection(id: ID!): Collection
+  listCollections(offset: Int, limit: Int, created_at: DateComparison, updated_at: DateComparison): ListCollection
+}

@@ -9,6 +9,27 @@
 
 ### Cart
 
+### Collection
+
+- [x] Get a Collection
+- [x] List Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Filters
 
