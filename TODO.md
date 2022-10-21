@@ -1,5 +1,15 @@
 ## Store
 
+## Checklist
+
+- [ ] Ensure attributes are alphabetical
+- [ ] Ensure types are alphabetical
+- [ ] Ensure resolvers are alphabetical
+- [ ] Ensure that required fields come first, alphabetically, followed by optional fields, alphabetically
+- [ ] Ensure naming convention is followed in queries and mutations, namely:
+  - get and list in queries
+  - create, update, delete in mutations
+
 ### Auth
 
 - [ ] Customer Login | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/6)
@@ -14,13 +24,39 @@
 - [x] Get a Collection
 - [x] List Collections
 
+### Customer
 
+- [x] Add a Shipping Address
+- [x] Create a Customer
+- [x] Delete and Address
+- [x] Update a Shipping Address
+- [x] Get a Customer
+- [x] Update Customer
+- [x] Get Payment Methods
+- [ ] List Orders // TODO
+- [x] Request Password Reset
+- [x] Reset Password
 
+### Gift Card
 
+- [ ] Get Gift Card by Code | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/7) | This has still been implemented but needs a second eye on if its been implemented right. I suspect there could be some admin only stuff here that may not have reflected completely when accessed through store
 
+### Order
 
+### Order Edit
 
+### Product
 
+### Product Variant
+
+### Region
+
+- [x] Get a Region
+- [x] List Regions
+
+### Return
+
+### Return Reason
 
 
 

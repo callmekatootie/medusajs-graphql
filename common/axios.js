@@ -6,10 +6,7 @@ if (!axios) {
 }
 
 const store = axios.create({
-  baseURL: `${process.env.MEDUSA_SERVER}/store`,
-  headers: {
-    Cookie: `connect.sid=${process.env.STORE_API_TOKEN}`
-  }
+  baseURL: `${process.env.MEDUSA_SERVER}/store`
 })
 
 const admin = axios.create({

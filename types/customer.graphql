@@ -21,6 +21,25 @@ type Exists {
   exists: Boolean
 }
 
+type PaymentMethodsResponse {
+  provider_id: ID
+  data: String
+}
+
+input AddShippingAddressInput {
+  address_1: String!
+  address_2: String
+  city: String!
+  company: String
+  country_code: String!
+  first_name: String!
+  last_name: String!
+  metadata: String
+  phone: String
+  postal_code: String!
+  province: String
+}
+
 input CreateCustomerInput {
   email: String!
   first_name: String!
@@ -29,11 +48,59 @@ input CreateCustomerInput {
   phone: String
 }
 
+input UpdateCustomerInput {
+  # TODO
+  # billing_address: AddressInput
+  email: String
+  first_name: String
+  last_name: String
+  password: String
+  phone: String
+  metadata: String
+}
+
+input DeleteShippingAddressInput {
+  id: ID!
+}
+
+input ResetPasswordInput {
+  email: String!
+  password: String!
+  token: String!
+}
+
+input ResetPasswordTokenInput {
+  email: String!
+}
+
+input UpdateShippingAddressInput {
+  id: ID!
+  address_1: String
+  address_2: String
+  city: String
+  company: String
+  country_code: String
+  first_name: String
+  last_name: String
+  metadata: String
+  phone: String
+  postal_code: String
+  province: String
+}
+
 type Mutation {
   createCustomer(input: CreateCustomerInput): Customer
+  createShippingAddress(input: AddShippingAddressInput): Customer
+  deleteShippingAddress(input: DeleteShippingAddressInput): Customer
+  storeResetPassword(input: ResetPasswordInput): Customer
+  storeResetPasswordToken(input: ResetPasswordTokenInput): NoContentResponse
+  updateCustomer(input: UpdateCustomerInput): Customer
+  updateShippingAddress(input: UpdateShippingAddressInput): Customer
 }
 
 type Query {
-  doesEmailExist(email: String!): Exists
   getCurrentCustomer: Customer
+  getPaymentMethods: [PaymentMethodsResponse!]!
+  # TODO
+  # listOrders: [Order!]!
 }

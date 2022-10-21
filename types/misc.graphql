@@ -1,0 +1,3 @@
+type Query {
+  doesEmailExist(email: String!): Exists
+}

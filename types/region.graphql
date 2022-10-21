@@ -1,9 +1,9 @@
 type Region {
-  id: ID
+  id: ID!
   automatic_taxes: Boolean
   countries: [Country]
-  currency_code: String
   created_at: String
+  currency_code: String
   deleted_at: String
   fulfillment_providers: [FulfillmentProvider]
   gift_cards_taxable: Boolean

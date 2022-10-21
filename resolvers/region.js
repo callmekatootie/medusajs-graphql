@@ -8,14 +8,7 @@ module.exports = {
 
       const res = await store.get(`/regions/${id}`)
 
-      let metadata
-
-      if (res.data.region.metadata) {
-        metadata = JSON.stringify(res.data.store.metadata)
-      }
-
-      return { ...res.data.region, metadata }
-      // TODO - Handle 404 if id not found
+      return res.data.region
     },
 
     async listRegions (parent, args, context, info) {
@@ -48,9 +41,19 @@ module.exports = {
     }
   },
 
+  Region: {
+    metadata: (parent, args, context, info) => {
+      if (parent.metadata) {
+        return JSON.stringify(parent.metadata)
+      }
+
+      return null
+    }
+  },
+
   Mutation: {
     async addCountry (parent, args, context, info) {
-      const { input: { id, ...others }} = args
+      const { input: { id, ...others } } = args
 
       const res = await admin.post(`/regions/${id}/countries`, { ...others })
 
@@ -59,8 +62,6 @@ module.exports = {
       if (res.data.region.metadata) {
         metadata = JSON.stringify(res.data.region.metadata)
       }
-
-      console.log(JSON.stringify(res.data))
 
       return { ...res.data.region, metadata }
     }

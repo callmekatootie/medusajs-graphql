@@ -56,7 +56,7 @@ input RequestPasswordResetInput {
 type Mutation {
   createUser(input: CreateUserInput): User
   deleteUser(input: DeleteUserInput): DeletionResponse
-  resetPassword(input: ResetPasswordInput): User
-  requestPasswordReset(input: RequestPasswordResetInput): NoContentResponse
+  adminResetPassword(input: ResetPasswordInput): User
+  adminResetPasswordToken(input: RequestPasswordResetInput): NoContentResponse
   updateUser(input: UpdateUserInput): User
 }

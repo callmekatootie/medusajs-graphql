@@ -1,0 +1,20 @@
+type GiftCard {
+  id: ID!
+  balance: Int!
+  code: String!
+  created_at: String
+  deleted_at: String
+  ends_at: String
+  is_disabled: Boolean
+  metadata: String
+  order_id: ID
+  # TODO
+  # order: Order
+  value: Int!
+  region: Region
+  updated_at: String
+}
+
+type Query {
+  getGitCardByCode(code: String!): GiftCard
+}

@@ -81,7 +81,7 @@ module.exports = {
       return res.data
     },
 
-    async resetPassword (parent, args, context, info) {
+    async adminResetPassword (parent, args, context, info) {
       const { input } = args
 
       const res = await admin.post('/users/password-token', { ...input })
@@ -95,7 +95,7 @@ module.exports = {
       return { ...res.data.user, metadata }
     },
 
-    async requestPasswordReset (parent, args, context, info) {
+    async adminResetPasswordToken (parent, args, context, info) {
       const { input } = args
 
       await admin.post('/users/password-token', { ...input })
