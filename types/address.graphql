@@ -1,0 +1,18 @@
+type Address {
+  id: ID!
+  address_1: String
+  address_2: String
+  city: String
+  company: String
+  country_code: String
+  created_at: String
+  customer_id: ID
+  deleted_at: String
+  first_name: String
+  last_name: String
+  metadata: String
+  phone: String
+  postal_code: String
+  province: String
+  updated_at: String
+}

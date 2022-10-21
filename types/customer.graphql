@@ -10,10 +10,15 @@ type Customer {
   has_account: Boolean
   last_name: String!
   metadata: String
+  # TODO - Implement once Order gets defined
+  # orders: [Order!]!
   phone: String
-  # TODO - Implement once Shipping address gets defined
-  # shipping_addresses: [ShippingAddress!]!
+  shipping_addresses: [Address!]!
   updated_at: String
+}
+
+type Exists {
+  exists: Boolean
 }
 
 input CreateCustomerInput {
@@ -26,4 +31,9 @@ input CreateCustomerInput {
 
 type Mutation {
   createCustomer(input: CreateCustomerInput): Customer
+}
+
+type Query {
+  doesEmailExist(email: String!): Exists
+  getCurrentCustomer: Customer
 }
