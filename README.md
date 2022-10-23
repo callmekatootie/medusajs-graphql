@@ -18,7 +18,7 @@ A GraphQL api for [Medusajs](https://medusajs.com/). It currently wraps the exis
 
 ### Preview
 
-![Demo]()
+![Demo](./assets/graphql-for-medusa.gif)
 
 ## Set up Project
 

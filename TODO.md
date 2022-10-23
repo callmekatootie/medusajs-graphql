@@ -1,15 +1,5 @@
 ## Store
 
-## Checklist
-
-- [ ] Ensure attributes are alphabetical
-- [ ] Ensure types are alphabetical
-- [ ] Ensure resolvers are alphabetical
-- [ ] Ensure that required fields come first, alphabetically, followed by optional fields, alphabetically
-- [ ] Ensure naming convention is followed in queries and mutations, namely:
-  - get and list in queries
-  - create, update, delete in mutations
-
 ### Auth
 
 - [ ] Customer Login | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/6)
@@ -18,6 +8,22 @@
 - [x] Check if email exists
 
 ### Cart
+
+- [ ] Add a Shipping Method
+- [x] Calculate Cart Taxes
+- [ ] Complete a Cart
+- [x] Create a Cart
+- [ ] Add a Line Item
+- [ ] Create Payment Sessions
+- [ ] Remove Discount
+- [ ] Delete a Line Item
+- [ ] Update a Line Item
+- [ ] Delete a Payment Session
+- [ ] Update a Payment Session
+- [x] Get a Cart
+- [ ] Update a Cart
+- [ ] Refresh a Payment Session
+- [ ] Select a Payment Session
 
 ### Collection
 
@@ -73,6 +79,8 @@ Schema implemented. However, a data generation issue remains | [Relevant Issue](
 
 ### Return
 
+- [ ] Create Return
+
 ### Return Reason
 
 - [x] Get a Return Reason
@@ -80,12 +88,19 @@ Schema implemented. However, a data generation issue remains | [Relevant Issue](
 
 ### Shipping Option
 
+- [ ] Get Shipping Options
+- [ ] List for Cart
+
 ### Swap
 
+- [ ] Create a Swap
+- [ ] Get by Cart Id
 
+## Admin
 
+All admin related endpoints are still being implemented
 
-
+## Misc
 
 ### Filters
 

@@ -1,0 +1,73 @@
+enum CartType {
+  CLAIM
+  DEFAULT
+  DRAFT_ORDER
+  PAYMENT_LINK
+  SWAP
+}
+
+input CreateCartInput {
+  region_id: ID
+  sales_channel_id: ID
+  country_code: String
+  items: [CreateCartItemsInput!]
+  context: String
+}
+
+input CreateCartItemsInput {
+  variant_id: ID
+  quantity: Int
+}
+
+type Cart {
+  id: ID!
+  # TODO
+  # billing_address: Address
+  billing_address_id: ID
+  completed_at: String
+  context: String
+  customer: Customer
+  customer_id: ID
+  discount_total: Float
+  discounts: [Discount!]!
+  email: String
+  gift_card_tax_total: Float
+  gift_card_total: Float
+  gift_cards: [GiftCard!]!
+  idempotency_key: String
+  item_tax_total: Float
+  # TODO
+  # items: [LineItem!]!
+  metadata: String
+  # TODO
+  # payment: Payment
+  payment_authorized_at: String
+  payment_id: ID
+  # TODO
+  # payment_session: PaymentSession
+  region: Region
+  region_id: ID
+  refundable_amount: Float
+  refunded_total: Float
+  sales_channel: SalesChannel
+  sales_channel_id: ID
+  shipping_address: Address
+  shipping_addess_id: ID
+  # TODO
+  # shipping_methods: [ShippingMethod!]!
+  shipping_tax_total: Float
+  shipping_total: Float
+  sub_total: Float
+  tax_total: Float
+  total: Float
+  type: CartType
+}
+
+type Mutation {
+  calculateCartTaxes(id: ID!): Cart
+  createCart(input: CreateCartInput): Cart
+}
+
+type Query {
+  getCart(id: ID!): Cart
+}
