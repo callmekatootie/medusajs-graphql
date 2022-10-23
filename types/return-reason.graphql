@@ -1,5 +1,5 @@
 type ReturnReason {
-  id: ID
+  id: ID!
   created_at: String
   deleted_at: String
   description: String

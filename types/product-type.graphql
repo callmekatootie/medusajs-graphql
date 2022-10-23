@@ -1,5 +1,5 @@
 type ProductType {
-  id: ID
+  id: ID!
   created_at: String
   deleted_at: String
   metadata: String

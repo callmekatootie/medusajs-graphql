@@ -1,8 +1,8 @@
 type Image {
-  id: ID
+  id: ID!
   created_at: String
   deleted_at: String
   metadata: String
   updated_at: String
-  url: String
+  url: String!
 }

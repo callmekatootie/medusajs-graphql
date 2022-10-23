@@ -4,19 +4,7 @@ const { admin } = require('../common/axios')
 async function _getReturnReason (id) {
   const res = await admin.get(`/return-reasons/${id}`)
 
-  let metadata
-
-  if (res.data.return_reason.metadata) {
-    metadata = JSON.stringify(res.data.return_reason.metadata)
-  }
-
-  res.data.return_reason.return_reason_children.forEach(r => {
-    if (r.metadata) {
-      r.metadata = JSON.stringify(r.metadata)
-    }
-  })
-
-  return { ...res.data.return_reason, metadata }
+  return res.data.return_reason
 }
 
 module.exports = {
@@ -30,13 +18,27 @@ module.exports = {
     async listReturnReasons (parent, args, context, info) {
       const res = await admin.get('/return-reasons')
 
-      res.data.return_reasons.forEach(r => {
-        if (r.metadata) {
-          r.metadata = JSON.stringify(r.metadata)
-        }
-      })
-
       return res.data.return_reasons
+    }
+  },
+
+  ReturnReason: {
+    metadata: (parent, args, context, info) => {
+      if (parent.metadata) {
+        return JSON.stringify(parent.metadata)
+      }
+
+      return null
+    },
+
+    async parent_return_reason (parent, args, context, info) {
+      const { parent_return_reason_id: id } = parent
+
+      if (id) {
+        return _getReturnReason(id)
+      }
+
+      return null
     }
   },
 
@@ -54,13 +56,7 @@ module.exports = {
 
       const res = await admin.post('/return-reasons', { ...input })
 
-      let metadata
-
-      if (res.data.return_reason.metadata) {
-        metadata = JSON.stringify(res.data.return_reason.metadata)
-      }
-
-      return { ...res.data.return_reason, metadata }
+      return res.data.return_reason
     },
 
     async updateReturnReason (parent, args, context, info) {
@@ -76,13 +72,7 @@ module.exports = {
 
       const res = await admin.post(`/return-reasons/${id}`, { ...others })
 
-      let metadata
-
-      if (res.data.return_reason.metadata) {
-        metadata = JSON.stringify(res.data.return_reason.metadata)
-      }
-
-      return { ...res.data.return_reason, metadata }
+      return res.data.return_reason
     },
 
     async deleteReturnReason (parent, args, context, info) {
@@ -91,18 +81,6 @@ module.exports = {
       const res = await admin.delete(`/return-reasons/${input.id}`)
 
       return res.data
-    }
-  },
-
-  ReturnReason: {
-    async parent_return_reason (parent, args, context, info) {
-      const { parent_return_reason_id: id } = parent
-
-      if (id) {
-        return _getReturnReason(id)
-      }
-
-      return null
     }
   }
 }

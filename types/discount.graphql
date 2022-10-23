@@ -1,0 +1,17 @@
+type Discount {
+  id: ID!
+  code: String
+  ends_at: String
+  is_disabled: Boolean
+  is_dynamic: Boolean
+  metadata: String
+  parent_discount: Discount
+  parent_discount_id: ID
+  regions: [Region!]!
+  rule: DiscountRule
+  rule_id: ID
+  starts_at: String
+  usage_count: Int
+  usage_limit: Int
+  valid_duration: String
+}

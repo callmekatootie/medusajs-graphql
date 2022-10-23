@@ -1,0 +1,9 @@
+type ProductOptionValue {
+  id: ID!
+  metadata: String
+  option: ProductOption
+  option_id: ID
+  value: String
+  variant: ProductVariant
+  variant_id: ID
+}

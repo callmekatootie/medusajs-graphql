@@ -1,0 +1,103 @@
+enum FulfillmentStatus {
+  CANCELLED
+  FULFILLED
+  NOTFULFILLED
+  PARTIALLYFULFILLED
+  PARTIALLYRETURNED
+  PARTIALLYSHIPPED
+  RETURNED
+  REQUIRESACTION
+  SHIPPED
+}
+
+enum OrderStatus {
+  ARCHIVED
+  CANCELLED
+  COMPLETED
+  PENDING
+  REQUIRES_ACTION
+}
+
+enum PaymentStatus {
+  AWAITING
+  CANCELLED
+  CAPTURED
+  NOTPAID
+  PARTIALLYREFUNDED
+  REFUNDED
+  REQUIRESACTION
+}
+
+input ShippingAddressQuery {
+  postal_code: String
+}
+
+type Order {
+  id: ID!
+  billing_address: Address
+  billing_address_id: ID
+  canceled_at: String
+  # TODO
+  # cart: Cart
+  cart_id: ID
+  # TODO
+  # claims: [ClaimOrder!]!
+  currency: Currency
+  currency_code: String
+  customer: Customer
+  customer_id: ID
+  discounts: [Discount!]!
+  discount_total: Float
+  display_id: Int
+  # TODO
+  # draft_order: DraftOrder
+  draft_order_id: ID
+  edits: [OrderEdit!]!
+  email: String
+  external_id: String
+  # TODO
+  # fulfillments: [Fulfillment!]!
+  fulfillment_status: FulfillmentStatus
+  gift_cards: [GiftCard!]!
+  gift_card_tax_total: Float
+  gift_card_total: Float
+  # TODO
+  # gift_card_transactions: [GiftCardTransaction!]!
+  idempotency_key: String
+  # TODO
+  # items: [LineItem!]!
+  metadata: String
+  no_notification: Boolean
+  paid_total: Float
+  # TODO
+  # payments: [Payment!]!
+  payment_status: PaymentStatus
+  region: Region
+  region_id: ID
+  refundable_amount: Float
+  refunded_total: Float
+  # TODO
+  # refunds: [Refund!]!
+  # TODO
+  # returns: [Return!]!
+  sales_channel: SalesChannel
+  sales_channel_id: ID
+  shipping_address: Address
+  shipping_address_id: ID
+  # TODO
+  # shipping_methods: [ShippingMethod!]!
+  shipping_total: Float
+  status: OrderStatus
+  sub_total: Float
+  # TODO
+  # swaps: [Swap!]!
+  tax_rate: Float
+  tax_total: Float
+  total: Float
+}
+
+type Query {
+  getOrder(id: ID!): Order
+  getOrderByCartId(cart_id: ID!): Order
+  getOrderByLookup(display_id: Int!, email: String!, shipping_address: ShippingAddressQuery): Order
+}

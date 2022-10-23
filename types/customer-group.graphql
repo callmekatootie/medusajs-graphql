@@ -1,7 +1,10 @@
-type ProductTag {
+type CustomerGroup {
   id: ID!
   created_at: String
   deleted_at: String
+  customers: [Customer!]!
   metadata: String
+  name: String
+  price_lists: [PriceList!]!
   updated_at: String
 }

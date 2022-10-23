@@ -1,0 +1,39 @@
+enum OrderEditStatus {
+  CANCELLED
+  CONFIRMED
+  CREATED
+  DECLINED
+  REQUESTED
+}
+
+type OrderEdit {
+  id: ID!
+  canceled_at: String
+  canceled_by: String
+  # TODO
+  # changes: OrderItemChange
+  confirmed_by: String
+  created_by: String
+  declined_at: String
+  declined_by: String
+  declined_reason: String
+  difference_due: Float
+  discount_total: Float
+  gift_card_tax_total: Float
+  gift_card_total: Float
+  internal_note: String
+  # TODO
+  # items: [LineItem!]!
+  order: Order
+  order_id: ID
+  # TODO
+  # payment_collection: PaymentCollection
+  payment_collection_id: ID
+  requested_at: String
+  requested_by: String
+  shipping_total: Float
+  status: OrderEditStatus
+  subtotal: Float
+  tax_total: Float
+  total: Float
+}

@@ -1,0 +1,14 @@
+type MoneyAmount {
+  id: ID!
+  amount: Float
+  currency: Currency
+  currency_code: String
+  min_quantity: Int
+  max_quantity: Int
+  price_list: PriceList
+  price_list_id: ID
+  region: Region
+  region_id: ID
+  variant: ProductVariant
+  variant_id: ID
+}

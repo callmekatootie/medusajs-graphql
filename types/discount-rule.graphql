@@ -1,0 +1,20 @@
+enum AllocationType {
+  ITEM
+  TOTAL
+}
+
+enum DiscountRuleType {
+  FIXED
+  FREESHIPPING
+  PERCENTAGE
+}
+
+type DiscountRule {
+  id: ID!
+  allocation: AllocationType
+  conditions: [DiscountCondition!]!
+  description: String
+  metadata: String
+  type: DiscountRuleType
+  value: Float
+}

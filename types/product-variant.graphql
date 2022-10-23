@@ -1,0 +1,57 @@
+type ProductVariant {
+  id: ID!
+  allow_backorder: Boolean
+  barcode: String
+  calculated_price: Float
+  calculated_price_incl_tax: Float
+  calculated_tax: Float
+  created_at: String
+  deleted_at: String
+  ean: String
+  height: Float
+  hs_code: String
+  inventory_quantity: Int
+  length: Float
+  manage_inventory: Boolean
+  material: String
+  metadata: String
+  mid_code: String
+  title: String
+  options: [ProductOptionValue]
+  origin_country: String
+  original_price: Float
+  original_price_incl_tax: Float
+  original_tax: Float
+  prices: [MoneyAmount!]!
+  product: Product
+  product_id: ID
+  sku: String
+  upc: String
+  updated_at: String
+  variant_rank: Int
+  width: Float
+  weight: Float
+}
+
+type Query {
+  getProductVariant(
+    id: ID!
+    cart_id: ID
+    currency_code: String
+    region_id: ID
+  ): ProductVariant
+  listProductVariants(
+    expand: String
+    ids: String
+    limit: Int
+    offset: Int
+    title: String
+    inventory_quantity: String
+  ): String
+}
+
+type TaxRate {
+  code: String
+  name: String
+  rate: Float
+}

@@ -1,3 +1,28 @@
+input CreateProductCollectionInput {
+  title: String!
+  handle: String
+  metadata: String
+}
+
+input DeleteProductCollectionInput {
+  id: ID!
+}
+
+input UpdateProductCollectionInput {
+  id: ID!
+  title: String
+  handle: String
+  metadata: String
+}
+
+type Mutation {
+  createProductCollection(input: CreateProductCollectionInput): ProductCollection
+  deleteProductCollection(input: DeleteProductCollectionInput): DeletionResponse
+  updateProductCollection(input: UpdateProductCollectionInput): ProductCollection
+  # TODO
+  # Mutations for adding and removing products from the collection
+}
+
 type ProductCollection {
   id: ID!
   created_at: String
@@ -22,29 +47,4 @@ type Query {
     title: String
     updated_at: DateComparison
   ): [ProductCollection!]! 
-}
-
-input CreateProductCollectionInput {
-  title: String!
-  handle: String
-  metadata: String
-}
-
-input DeleteProductCollectionInput {
-  id: ID!
-}
-
-input UpdateProductCollectionInput {
-  id: ID!
-  title: String
-  handle: String
-  metadata: String
-}
-
-type Mutation {
-  createProductCollection(input: CreateProductCollectionInput): ProductCollection
-  deleteProductCollection(input: DeleteProductCollectionInput): DeletionResponse
-  updateProductCollection(input: UpdateProductCollectionInput): ProductCollection
-  # TODO
-  # Mutations for adding and removing products from the collection
 }

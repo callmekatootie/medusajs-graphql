@@ -1,0 +1,80 @@
+enum ProductStatus {
+  DRAFT
+  PROPOSED
+  PUBLISHED
+  REJECTED
+}
+
+type Product {
+  id: ID!
+  collection: ProductCollection
+  collection_id: ID
+  created_at: String
+  deleted_at: String
+  description: String
+  discountable: Boolean
+  external_id: String
+  handle: String
+  height: Float
+  hs_code: String
+  images: [Image!]!
+  is_giftcard: Boolean
+  length: Float
+  material: String
+  metadata: String
+  mid_code: String
+  options: [ProductOption!]!
+  origin_country: String
+  # TODO
+  # profile: ShippingProfile
+  profile_id: ID
+  sales_channels: [SalesChannel!]
+  status: ProductStatus
+  subtitle: String
+  tags: [ProductTag!]!
+  thumbnail: String
+  title: String
+  type: ProductType
+  type_id: ID
+  updated_at: String
+  variants: [ProductVariant!]!
+  weight: Float
+  width: Float
+}
+
+type ListProductsResponse {
+  limit: Int
+  offset: Int
+  products: [Product!]!
+}
+
+type Query {
+  getProduct(
+    id: ID!
+    cart_id: ID
+    region_id: ID
+    currency_code: String
+  ): Product
+  listProducts(
+    collection_id: [String]
+    created_at: DateComparison
+    description: String
+    handle: String
+    id: [String]
+    is_giftcard: Boolean
+    q: String
+    tags: [String]
+    title: String
+    type: String
+    updated_at: DateComparison
+  ): ListProductsResponse
+  searchProducts(
+    limit: Int
+    offset: Int
+    q: String!
+  ): SearchProductsResponse
+}
+
+type SearchProductsResponse {
+  hits: String
+}

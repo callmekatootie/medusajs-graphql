@@ -1,0 +1,22 @@
+enum PriceListStatus {
+  ACTIVE
+  DRAFT
+}
+
+enum PriceListType {
+  OVERRIDE
+  SALE
+}
+
+type PriceList {
+  id: ID!
+  customer_groups: [CustomerGroup!]!
+  description: String
+  ends_at: String
+  includes_tax: Boolean
+  name: String
+  prices: [MoneyAmount!]!
+  starts_at: String
+  status: PriceListStatus
+  type: PriceListType
+}

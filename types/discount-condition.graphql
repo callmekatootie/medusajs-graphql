@@ -1,0 +1,26 @@
+enum DiscountConditionOperator {
+  IN
+  NOTIN
+}
+
+enum DiscountConditionType {
+  CUSTOMERGROUPS
+  PRODUCTCOLLECTIONS
+  PRODUCTS
+  PRODUCTTAGS
+  PRODUCTTYPES
+}
+
+type DiscountCondition {
+  id: ID!
+  customer_groups: [CustomerGroup!]!
+  discount_rule: DiscountRule
+  discount_rule_id: ID
+  metadata: String
+  operator: DiscountConditionOperator
+  products: [Product!]!
+  product_collections: [Collection!]!
+  product_tags: [ProductTag!]!
+  product_types: [ProductType!]!
+  type: DiscountConditionType
+}

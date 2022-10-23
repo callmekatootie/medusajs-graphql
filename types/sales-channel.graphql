@@ -1,5 +1,31 @@
+input CreateSalesChannelInput {
+  description: String
+  is_disabled: Boolean
+  name: String!
+}
+
+input UpdateSalesChannelInput {
+  id: ID!
+  description: String
+  is_disabled: Boolean
+  name: String
+}
+
+input DeleteSalesChannelInput {
+  id: ID!
+}
+
+type Mutation {
+  createSalesChannel(input: CreateSalesChannelInput): SalesChannel
+  deleteSalesChannel(input: DeleteSalesChannelInput): DeletionResponse
+  updateSalesChannel(input: UpdateSalesChannelInput): SalesChannel
+  # TODO
+  # - Add a Product Mutation
+  # - Delete a Product Mutation
+}
+
 type SalesChannel {
-  id: ID
+  id: ID!
   created_at: String
   deleted_at: String
   description: String
@@ -25,30 +51,3 @@ type Query {
     updated_at: DateComparison
   ): [SalesChannel!]!
 }
-
-input CreateSalesChannelInput {
-  description: String
-  is_disabled: Boolean
-  name: String!
-}
-
-input UpdateSalesChannelInput {
-  id: ID!
-  description: String
-  is_disabled: Boolean
-  name: String
-}
-
-input DeleteSalesChannelInput {
-  id: ID!
-}
-
-type Mutation {
-  createSalesChannel(input: CreateSalesChannelInput): SalesChannel
-  deleteSalesChannel(input: DeleteSalesChannelInput): DeletionResponse
-  updateSalesChannel(input: UpdateSalesChannelInput): SalesChannel
-}
-
-# TODO
-# - Add a Product Mutation
-# - Delete a Product Mutation

@@ -39,15 +39,32 @@
 
 ### Gift Card
 
-- [ ] Get Gift Card by Code | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/7) | This has still been implemented but needs a second eye on if its been implemented right. I suspect there could be some admin only stuff here that may not have reflected completely when accessed through store
+- [ ] Get Gift Card by Code | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/7) | This has been implemented but needs a second eye on if its been implemented right. I suspect there could be some admin only stuff here that may not have reflected completely when accessed through store
 
 ### Order
 
+- [x] Get by Cart ID
+- [x] Get an Order
+- [x] Look Up and Order
+
 ### Order Edit
+
+Schema implemented. However, a data generation issue remains | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/8)
+
+- [ ] Completes an OrderEdit
+- [ ] Decline an OrderEdit
+- [ ] Retrieve an OrderEdit
 
 ### Product
 
+- [x] Get a Product
+- [x] List Products
+- [x] Search Products
+
 ### Product Variant
+
+- [x] Get a Product Variant
+- [x] Get Product Variants
 
 ### Region
 
@@ -58,9 +75,12 @@
 
 ### Return Reason
 
+- [x] Get a Return Reason
+- [x] List Return Reasons
 
+### Shipping Option
 
-
+### Swap
 
 
 
@@ -76,7 +96,6 @@
 
 - [ ] Currencies | Update a Currency currently fails | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/3)
 - [ ] Store | Delete a Currency Code does not work | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/4)
-- [ ] Auth | Login and logout | 
 
 ### Others
 
