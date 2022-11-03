@@ -1,0 +1,22 @@
+type ShippingMethod {
+  id: ID!
+  cart_id: ID
+  cart: Cart
+  claim_order_id: ID
+  claim_order: ClaimOrder
+  data: String
+  includes_tax: Boolean
+  order_id: ID
+  order: Order
+  price: Float!
+  return_id: ID
+  return_order: Return
+  shipping_option_id: ID!
+  shipping_option: ShippingOption
+  subtotal: Float
+  swap_id: ID
+  swap: Swap
+  tax_lines: [ShippingMethodTaxLine!]!
+  tax_total: Float
+  total: Float
+}

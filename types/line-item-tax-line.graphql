@@ -1,0 +1,9 @@
+type LineItemTaxLine {
+  id: ID!
+  code: String
+  item_id: ID
+  item: LineItem
+  metadata: String
+  name: String!
+  rate: Float!
+}

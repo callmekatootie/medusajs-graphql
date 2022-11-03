@@ -1,0 +1,10 @@
+type ClaimImage {
+  id: ID!
+  claim_item_id: ID!
+  claim_item: ClaimItem
+  created_at: String
+  deleted_at: String
+  metadata: String
+  updated_at: String
+  url: String!
+}

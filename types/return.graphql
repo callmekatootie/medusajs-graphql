@@ -1,0 +1,25 @@
+enum ReturnStatus {
+  CANCELED
+  RECEIVED
+  REQUESTED
+  REQUIRESACTION
+}
+
+type Return {
+  id: ID!
+  claim_order_id: ID
+  claim_order: ClaimOrder
+  idempotency_key: String
+  metadata: String
+  no_notification: Boolean
+  order_id: ID
+  order: Order
+  received_at: String
+  refund_amount: Float!
+  shipping_data: String
+  shipping_method: ShippingMethod
+  status: ReturnStatus
+  swap_id: ID
+  swap: Swap
+  items: [ReturnItem!]!
+}

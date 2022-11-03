@@ -1,0 +1,46 @@
+enum ClaimFulfillmentStatus {
+  NOTFULFILLED
+  PARTIALLYFULFILLED
+  FULFILLED
+  PARTIALLYSHIPPED
+  SHIPPED
+  PARTIALLYRETURNED
+  RETURNED
+  CANCELED
+  REQUIRESACTION
+}
+
+enum ClaimPaymentStatus {
+  NA
+  NOTREFUNDED
+  REFUNDED
+}
+
+enum ClaimType {
+  REFUND
+  REPLACE
+}
+
+type ClaimOrder {
+  id: ID!
+  additional_items: [LineItem!]!
+  canceled_at: String
+  claim_items: [ClaimItem!]!
+  created_at: String
+  deleted_at: String
+  fulfillments: [Fulfillment!]!
+  fulfillment_status: ClaimFulfillmentStatus
+  idempotency_key: String
+  metadata: String
+  no_notification: Boolean
+  order_id: ID!
+  order: Order
+  payment_status: ClaimPaymentStatus
+  refund_amount: Float
+  return_order: Return
+  shipping_address_id: ID
+  shipping_address: Address
+  shipping_methods: [ShippingMethod!]!
+  type: ClaimType!
+  updated_at: String
+}

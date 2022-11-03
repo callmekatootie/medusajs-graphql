@@ -1,0 +1,14 @@
+type ReturnItem {
+  is_requested: Boolean
+  item_id: ID!
+  item: LineItem
+  metadata: String
+  note: String
+  quantity: Int
+  reason_id: ID
+  reason: ReturnReason
+  received_quantity: Int
+  requested_quantity: Int
+  return_id: ID!
+  return_order: Return
+}

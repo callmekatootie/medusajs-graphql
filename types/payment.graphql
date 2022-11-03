@@ -1,0 +1,19 @@
+type Payment {
+  id: ID!
+  amount: Float!
+  amount_refunded: Float
+  canceled_at: String
+  captured_at: String
+  cart_id: ID
+  cart: Cart
+  currency_code: String!
+  currency: Currency
+  data: String
+  idempotency_key: String
+  metadata: String
+  order_id: ID
+  order: Order
+  provider_id: ID!
+  swap_id: ID
+  swap: Swap
+}

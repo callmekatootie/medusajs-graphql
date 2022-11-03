@@ -1,0 +1,25 @@
+enum ClaimReason {
+  MISSINGITEM
+  WRONGITEM
+  PRODUCTIONFAILURE
+  OTHER
+}
+
+type ClaimItem {
+  id: ID!
+  claim_order_id: ID!
+  claim_order: ClaimOrder
+  created_at: String
+  deleted_at: String
+  images: [ClaimImage!]!
+  item_id: ID!
+  item: LineItem
+  metadata: String
+  note: String
+  quantity: Int!
+  reason: ClaimReason!
+  tags: [ClaimTag!]!
+  updated_at: String
+  variant_id: ID!
+  variant: ProductVariant
+}

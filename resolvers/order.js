@@ -2,7 +2,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   FulfillmentStatus: {
-    CANCELLED: 'canceled',
+    CANCELED: 'canceled',
     FULFILLED: 'fulfilled',
     NOTFULFILLED: 'not_fulfilled',
     PARTIALLYFULFILLED: 'partially_fulfilled',
@@ -25,7 +25,7 @@ module.exports = {
 
   OrderStatus: {
     ARCHIVED: 'archived',
-    CANCELLED: 'canceled',
+    CANCELED: 'canceled',
     COMPLETED: 'completed',
     PENDING: 'pending',
     REQUIRES_ACTION: 'requires_action'
@@ -33,7 +33,7 @@ module.exports = {
 
   PaymentStatus: {
     AWAITING: 'awaiting',
-    CANCELLED: 'canceled',
+    CANCELED: 'canceled',
     CAPTURED: 'captured',
     NOTPAID: 'not_paid',
     PARTIALLYREFUNDED: 'partially_refunded',

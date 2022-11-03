@@ -1,0 +1,14 @@
+enum ShippingProfileType {
+  CUSTOM
+  DEFAULT
+  GIFTCARD
+}
+
+type ShippingProfile {
+  id: ID!
+  metadata: String
+  name: String!
+  products: [Product!]!
+  shipping_options: [ShippingOption!]!
+  type: ShippingProfileType!
+}

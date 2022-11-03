@@ -1,0 +1,67 @@
+enum SwapFulfillmentStatus {
+  CANCELED
+  FULFILLED
+  NOTFULFILLED
+  PARTIALLYSHIPPED
+  REQUIRESACTION
+  SHIPPED
+}
+
+enum SwapPaymentStatus {
+  AWAITING
+  CANCELED
+  CAPTURED
+  CONFIRMED
+  DIFFERENCEREFUNDED
+  NOTPAID
+  PARTIALLYREFUNDED
+  REFUNDED
+  REQUIRESACTION
+}
+
+input AdditionalItemsInput {
+  quantity: Int
+  variant_id: ID
+}
+
+input CreateSwapInput {
+  additional_items: [AdditionalItemsInput!]!
+  order_id: ID!
+  return_items: [ReturnItemsInput!]!
+  return_shipping_option: String
+}
+
+input ReturnItemsInput {
+  item_id: ID!
+  note: String
+  quantity: Int!
+  reason_id: ID
+}
+
+type Mutation {
+  createSwap(input: CreateSwapInput): Swap
+}
+
+type Swap {
+  id: ID!
+  additional_items: [LineItem]
+  allow_backorder: Boolean
+  canceled_at: String
+  cart_id: ID
+  cart: Cart
+  confirmed_at: String
+  difference_due: Float
+  fulfillments: [Fulfillment!]!
+  fulfillment_status: SwapFulfillmentStatus!
+  idempotency_key: String
+  metadata: String
+  no_notification: Boolean
+  order_id: ID!
+  order: Order
+  payment: Payment
+  payment_status: SwapPaymentStatus!
+  return_order: Return
+  shipping_address_id: ID
+  shipping_address: Address
+  shipping_methods: [ShippingMethod!]!
+}

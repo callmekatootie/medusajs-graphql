@@ -1,0 +1,9 @@
+type ShippingMethodTaxLine {
+  id: ID!
+  code: String
+  metadata: String
+  name: String!
+  rate: Float!
+  shipping_method_id: ID!
+  shipping_method: ShippingMethod
+}

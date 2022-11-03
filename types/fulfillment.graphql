@@ -1,0 +1,20 @@
+type Fulfillment {
+  id: ID!
+  canceled_at: String
+  claim_order_id: ID
+  claim_order: ClaimOrder
+  data: String
+  idempotency_key: String
+  items: [FulfillmentItem!]!
+  metadata: String
+  no_notification: Boolean
+  order_id: ID
+  order: Order
+  provider_id: ID!
+  provider: FulfillmentProvider
+  shipped_at: String
+  swap_id: ID
+  swap: Swap
+  tracking_links: [TrackingLink!]!
+  tracking_numbers: [String!]!
+}

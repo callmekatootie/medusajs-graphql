@@ -1,0 +1,13 @@
+enum RequirementType {
+  MAXSUBTOTAL
+  MINSUBTOTAL
+}
+
+type ShippingOptionRequirement {
+  id: ID!
+  amount: Float!
+  deleted_at: String
+  shipping_option_id: ID!
+  shipping_option: ShippingOption
+  type: RequirementType!
+}

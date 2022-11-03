@@ -1,0 +1,23 @@
+enum ShippingOptionPriceType {
+  FLATRATE
+  CALCULATED
+}
+
+type ShippingOption {
+  id: ID!
+  admin_only: Boolean
+  amount: Float
+  data: String
+  includes_tax: Boolean
+  is_return: Boolean
+  metadata: String
+  name: String!
+  price_type: ShippingOptionPriceType!
+  profile_id: ID!
+  profile: ShippingProfile
+  provider_id: ID!
+  provider: FulfillmentProvider
+  region_id: ID!
+  region: Region
+  requirements: [ShippingOptionRequirement!]!
+}

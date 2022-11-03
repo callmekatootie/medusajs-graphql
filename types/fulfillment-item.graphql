@@ -1,0 +1,7 @@
+type FulfillmentItem {
+  fulfillment_id: ID!
+  fulfillment: Fulfillment
+  item_id: ID!
+  item: LineItem
+  quantity: Int!
+}

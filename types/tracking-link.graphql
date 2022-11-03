@@ -1,0 +1,8 @@
+type TrackingLink {
+  id: ID!
+  fulfillment_id: ID!
+  idempotency_key: String
+  metadata: String
+  tracking_number: String!
+  url: String
+}

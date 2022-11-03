@@ -1,6 +1,6 @@
 module.exports = {
   OrderEditStatus: {
-    CANCELLED: 'canceled',
+    CANCELED: 'canceled',
     CONFIRMED: 'confirmed',
     CREATED: 'created',
     DECLINED: 'declined',

@@ -1,0 +1,10 @@
+type LineItemAdjustment {
+  id: ID!
+  amount: Float!
+  description: String!
+  discount_id: ID
+  discount: Discount
+  item_id: ID!
+  item: LineItem
+  metadata: String
+}
