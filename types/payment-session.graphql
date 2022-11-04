@@ -1,0 +1,20 @@
+enum PaymentSessionStatus {
+  AUTHORIZED
+  CANCELED
+  ERROR
+  PENDING
+  REQUIRESMORE
+}
+
+type PaymentSession {
+  id: ID!
+  amount: Float
+  cart_id: ID!
+  cart: Cart
+  data: String
+  idempotency_key: String
+  is_selected: Boolean
+  payment_authorized_at: String
+  provider_id: ID!
+  status: String!
+}

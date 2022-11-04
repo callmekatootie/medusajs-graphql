@@ -1,0 +1,16 @@
+enum OrderEditItemChangeType {
+  ITEMADD
+  ITEMREMOVE
+  ITEMUPDATE
+}
+
+type OrderItemChange {
+  id: ID!
+  line_item_id: ID
+  line_item: LineItem
+  order_edit_id: ID!
+  order_edit: OrderEdit
+  original_line_item_id: ID
+  original_line_item: LineItem
+  type: OrderEditItemChangeType!
+}

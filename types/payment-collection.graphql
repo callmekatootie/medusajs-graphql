@@ -1,0 +1,35 @@
+enum PaymentCollectionStatus {
+  AUTHORIZED
+  AWAITING
+  CANCELED
+  CAPTURED
+  NOTPAID
+  PARTIALLYAUTHORIZED
+  PARTIALLYCAPTURED
+  PARTIALLYREFUNDED
+  REFUNDED
+  REQUIRESACTION
+}
+
+enum PaymentCollectionType {
+  ORDEREDIT
+}
+
+type PaymentCollection {
+  id: ID!
+  amount: Float
+  authorized_amount: Float
+  captured_amount: Float
+  created_by: String
+  currency_code: String
+  currency: Currency
+  description: String
+  metadata: String
+  payments: [Payment!]!
+  payment_sessions: [PaymentSession!]!
+  refunded_amount: Float
+  region_id: ID
+  region: Region
+  status: PaymentCollectionStatus
+  type: PaymentCollectionType
+}

@@ -57,9 +57,9 @@
 
 Schema implemented. However, a data generation issue remains | [Relevant Issue](https://github.com/callmekatootie/medusajs-graphql/issues/8)
 
-- [ ] Completes an OrderEdit
-- [ ] Decline an OrderEdit
-- [ ] Retrieve an OrderEdit
+- [x] Completes an OrderEdit
+- [x] Decline an OrderEdit
+- [x] Retrieve an OrderEdit
 
 ### Product
 
