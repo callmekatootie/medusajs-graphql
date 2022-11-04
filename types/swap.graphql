@@ -32,7 +32,7 @@ input CreateSwapInput {
 }
 
 input GetByCartIdInput {
-  cart_id: String!
+  cart_id: ID!
 }
 
 input ReturnItemsInput {

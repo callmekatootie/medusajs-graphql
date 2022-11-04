@@ -1,3 +1,5 @@
+const { store } = require('../common/axios')
+
 module.exports = {
   ShippingOption: {
     data: (parent, args, ctx, info) => {
@@ -20,5 +22,33 @@ module.exports = {
   ShippingOptionPriceType: {
     FLATRATE: 'flat_rate',
     CALCULATED: 'calculated'
+  },
+
+  Query: {
+    async listShippingOptions (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
+
+      const res = await store.get('/shipping-options', {
+        params: { ...args },
+        headers: {
+          Cookie: `connect.sid=${auth}`
+        }
+      })
+
+      return res.data.shipping_options
+    },
+
+    async listShippingOptionsForCart (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
+
+      const res = await store.get(`/shipping-options/${args.cart_id}`, {
+        params: { ...args },
+        headers: {
+          Cookie: `connect.sid=${auth}`
+        }
+      })
+
+      return res.data.shipping_options
+    }
   }
 }

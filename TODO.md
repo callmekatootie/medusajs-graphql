@@ -88,8 +88,8 @@ Schema implemented. However, a data generation issue remains | [Relevant Issue](
 
 ### Shipping Option
 
-- [ ] Get Shipping Options
-- [ ] List for Cart
+- [x] Get Shipping Options
+- [x] List for Cart
 
 ### Swap
 

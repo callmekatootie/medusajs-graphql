@@ -21,3 +21,8 @@ type ShippingOption {
   region: Region
   requirements: [ShippingOptionRequirement!]!
 }
+
+type Query {
+  listShippingOptions(is_return: Boolean, product_ids: [String], region_id: String): [ShippingOption!]!
+  listShippingOptionsForCart(cart_id: ID!): [ShippingOption!]!
+}
