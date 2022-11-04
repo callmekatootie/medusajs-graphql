@@ -9,7 +9,7 @@ module.exports = {
   },
 
   Query: {
-    async getUser (parent, args, context, info) {
+    async getUser (parent, args, ctx, info) {
       const { id } = args
 
       const res = await admin.get(`/users/${id}`)
@@ -23,7 +23,7 @@ module.exports = {
       return { ...res.data.user, metadata }
     },
 
-    async listUsers (parent, args, context, info) {
+    async listUsers (parent, args, ctx, info) {
       const res = await admin.get('/users')
 
       res.data.users.forEach(r => {
@@ -37,7 +37,7 @@ module.exports = {
   },
 
   Mutation: {
-    async createUser (parent, args, context, info) {
+    async createUser (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.post('/users', { ...input })
@@ -51,7 +51,7 @@ module.exports = {
       return { ...res.data.user, metadata }
     },
 
-    async updateUser (parent, args, context, info) {
+    async updateUser (parent, args, ctx, info) {
       const { input: { id, ...others } } = args
 
       if (others.metadata) {
@@ -73,7 +73,7 @@ module.exports = {
       return { ...res.data.user, metadata }
     },
 
-    async deleteUser (parent, args, context, info) {
+    async deleteUser (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.delete(`/users/${input.id}`)
@@ -81,7 +81,7 @@ module.exports = {
       return res.data
     },
 
-    async adminResetPassword (parent, args, context, info) {
+    async adminResetPassword (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.post('/users/password-token', { ...input })
@@ -95,7 +95,7 @@ module.exports = {
       return { ...res.data.user, metadata }
     },
 
-    async adminResetPasswordToken (parent, args, context, info) {
+    async adminResetPasswordToken (parent, args, ctx, info) {
       const { input } = args
 
       await admin.post('/users/password-token', { ...input })

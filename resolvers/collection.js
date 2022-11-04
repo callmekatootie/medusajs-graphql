@@ -3,7 +3,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   Collection: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   Query: {
-    async getCollection (parent, args, context, info) {
+    async getCollection (parent, args, ctx, info) {
       const { id } = args
 
       const res = await store.get(`/collections/${id}`)
@@ -21,7 +21,7 @@ module.exports = {
       return res.data.collection
     },
 
-    async listCollections (parent, args, context, info) {
+    async listCollections (parent, args, ctx, info) {
       if (args.created_at || args.updated_at) {
         throw new GraphQLYogaError('created_at and updated_at are not yet supported')
       }

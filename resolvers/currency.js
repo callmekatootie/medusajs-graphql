@@ -3,7 +3,7 @@ const { admin } = require('../common/axios')
 
 module.exports = {
   Query: {
-    async listCurrencies (parent, args, context, info) {
+    async listCurrencies (parent, args, ctx, info) {
       if (args.order) {
         throw new GraphQLYogaError('order filter property is not yet supported')
       }

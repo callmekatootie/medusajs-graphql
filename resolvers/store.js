@@ -3,7 +3,7 @@ const { admin } = require('../common/axios')
 
 module.exports = {
   Query: {
-    async getStore (parent, args, context, info) {
+    async getStore (parent, args, ctx, info) {
       const res = await admin.get('/store')
 
       let metadata
@@ -15,20 +15,20 @@ module.exports = {
       return { ...res.data.store, metadata }
     },
 
-    async listPaymentProviders (parent, args, context, info) {
+    async listPaymentProviders (parent, args, ctx, info) {
       const res = await admin.get('/store/payment-providers')
 
       return res.data.payment_providers
     },
 
-    async listTaxProviders (parent, args, context, info) {
+    async listTaxProviders (parent, args, ctx, info) {
       const res = await admin.get('/store/tax-providers')
 
       return res.data.tax_providers
     }
   },
   Mutation: {
-    async updateStore (parent, args, context, info) {
+    async updateStore (parent, args, ctx, info) {
       const { input } = args
 
       if (input.metadata) {
@@ -50,7 +50,7 @@ module.exports = {
       return { ...res.data.store, metadata }
     },
 
-    async addCurrencyCode (parent, args, context, info) {
+    async addCurrencyCode (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.post(`/store/currencies/${input.code}`)
@@ -64,7 +64,7 @@ module.exports = {
       return { ...res.data.store, metadata }
     },
 
-    async deleteCurrencyCode (parent, args, context, info) {
+    async deleteCurrencyCode (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.delete(`/store/currencies/${input.code}`)

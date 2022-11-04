@@ -1,6 +1,6 @@
 module.exports = {
   Return: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -8,7 +8,7 @@ module.exports = {
       return null
     },
 
-    shipping_data: (parent, args, context, info) => {
+    shipping_data: (parent, args, ctx, info) => {
       if (parent.shipping_data) {
         return JSON.stringify(parent.shipping_data)
       }

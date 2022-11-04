@@ -31,6 +31,10 @@ input CreateSwapInput {
   return_shipping_option: String
 }
 
+input GetByCartIdInput {
+  cart_id: String!
+}
+
 input ReturnItemsInput {
   item_id: ID!
   note: String
@@ -64,4 +68,8 @@ type Swap {
   shipping_address_id: ID
   shipping_address: Address
   shipping_methods: [ShippingMethod!]!
+}
+
+type Query {
+  getByCartId(input: GetByCartIdInput): Swap
 }

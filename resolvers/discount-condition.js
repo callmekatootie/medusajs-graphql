@@ -1,6 +1,6 @@
 module.exports = {
   DiscountCondition: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }

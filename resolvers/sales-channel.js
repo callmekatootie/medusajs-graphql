@@ -3,7 +3,7 @@ const { admin } = require('../common/axios')
 
 module.exports = {
   Query: {
-    async listSalesChannels (parent, args, context, info) {
+    async listSalesChannels (parent, args, ctx, info) {
       if (args.order) {
         throw new GraphQLYogaError('order filter property is not yet supported')
       }
@@ -36,7 +36,7 @@ module.exports = {
       return res.data.sales_channels
     },
 
-    async getSalesChannel (parent, args, context, info) {
+    async getSalesChannel (parent, args, ctx, info) {
       const { id } = args
 
       const res = await admin.get(`/sales-channels/${id}`)
@@ -46,7 +46,7 @@ module.exports = {
   },
 
   Mutation: {
-    async createSalesChannel (parent, args, context, info) {
+    async createSalesChannel (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.post('/sales-channels', { ...input })
@@ -54,7 +54,7 @@ module.exports = {
       return res.data.sales_channel
     },
 
-    async updateSalesChannel (parent, args, context, info) {
+    async updateSalesChannel (parent, args, ctx, info) {
       const { input: { id, ...others } } = args
 
       const res = await admin.post(`/sales-channels/${id}`, { ...others })
@@ -62,7 +62,7 @@ module.exports = {
       return res.data.sales_channel
     },
 
-    async deleteSalesChannel (parent, args, context, info) {
+    async deleteSalesChannel (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.delete(`/sales-channels/${input.id}`)

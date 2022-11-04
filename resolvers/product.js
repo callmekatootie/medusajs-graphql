@@ -3,7 +3,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   Product: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -20,7 +20,7 @@ module.exports = {
   },
 
   Query: {
-    async getProduct (parent, args, context, info) {
+    async getProduct (parent, args, ctx, info) {
       const { id, ...others } = args
 
       const res = await store.get(`/products/${id}`, { params: { ...others } })
@@ -28,7 +28,7 @@ module.exports = {
       return res.data.product
     },
 
-    async listProducts (parent, args, context, info) {
+    async listProducts (parent, args, ctx, info) {
       if (args.created_at || args.updated_at) {
         throw new GraphQLYogaError('created_at or updated_at or deleted_at property is not yet supported')
       }
@@ -58,7 +58,7 @@ module.exports = {
       return res.data
     },
 
-    async searchProducts (parent, args, context, info) {
+    async searchProducts (parent, args, ctx, info) {
       const res = await store.post('/products/search', {}, { params: { ...args } })
 
       const hits = JSON.stringify(res.data.hits)

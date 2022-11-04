@@ -9,13 +9,13 @@ async function _getReturnReason (id) {
 
 module.exports = {
   Query: {
-    async getReturnReason (parent, args, context, info) {
+    async getReturnReason (parent, args, ctx, info) {
       const { id } = args
 
       return _getReturnReason(id)
     },
 
-    async listReturnReasons (parent, args, context, info) {
+    async listReturnReasons (parent, args, ctx, info) {
       const res = await admin.get('/return-reasons')
 
       return res.data.return_reasons
@@ -23,7 +23,7 @@ module.exports = {
   },
 
   ReturnReason: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -31,7 +31,7 @@ module.exports = {
       return null
     },
 
-    async parent_return_reason (parent, args, context, info) {
+    async parent_return_reason (parent, args, ctx, info) {
       const { parent_return_reason_id: id } = parent
 
       if (id) {
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   Mutation: {
-    async createReturnReason (parent, args, context, info) {
+    async createReturnReason (parent, args, ctx, info) {
       const { input } = args
 
       if (input.metadata) {
@@ -59,7 +59,7 @@ module.exports = {
       return res.data.return_reason
     },
 
-    async updateReturnReason (parent, args, context, info) {
+    async updateReturnReason (parent, args, ctx, info) {
       const { input: { id, ...others } } = args
 
       if (others.metadata) {
@@ -75,7 +75,7 @@ module.exports = {
       return res.data.return_reason
     },
 
-    async deleteReturnReason (parent, args, context, info) {
+    async deleteReturnReason (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.delete(`/return-reasons/${input.id}`)

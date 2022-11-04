@@ -1,5 +1,5 @@
 module.exports = {
-  ShippingOptionRequirement: {
+  RequirementType: {
     MAXSUBTOTAL: 'max_subtotal',
     MINSUBTOTAL: 'min_subtotal'
   }

@@ -3,7 +3,7 @@ const { admin } = require('../common/axios')
 
 module.exports = {
   Mutation: {
-    async createProductCollection (parent, args, context, info) {
+    async createProductCollection (parent, args, ctx, info) {
       const { input } = args
 
       if (input.metadata) {
@@ -19,7 +19,7 @@ module.exports = {
       return res.data.collection
     },
 
-    async deleteProductCollection (parent, args, context, info) {
+    async deleteProductCollection (parent, args, ctx, info) {
       const { input } = args
 
       const res = await admin.delete(`/collections/${input.id}`)
@@ -27,7 +27,7 @@ module.exports = {
       return res.data
     },
 
-    async updateProductCollection (parent, args, context, info) {
+    async updateProductCollection (parent, args, ctx, info) {
       const { input: { id, ...others } } = args
 
       if (others.metadata) {
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   ProductCollection: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -55,7 +55,7 @@ module.exports = {
   },
 
   Query: {
-    async getProductCollection (parent, args, context, info) {
+    async getProductCollection (parent, args, ctx, info) {
       const { id } = args
 
       const res = await admin.get(`/collections/${id}`)
@@ -63,7 +63,7 @@ module.exports = {
       return res.data.collection
     },
 
-    async listProductCollections (parent, args, context, info) {
+    async listProductCollections (parent, args, ctx, info) {
       if (args.createdAt || args.updatedAt || args.deletedAt) {
         throw new GraphQLYogaError('created_at or updated_at or deleted_at property is not yet supported')
       }

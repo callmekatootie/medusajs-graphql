@@ -2,7 +2,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   ProductVariant: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }

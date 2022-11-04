@@ -3,7 +3,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   Cart: {
-    context: (parent, args, context, info) => {
+    context: (parent, args, ctx, info) => {
       if (parent.context) {
         return JSON.stringify(parent.context)
       }
@@ -11,7 +11,7 @@ module.exports = {
       return null
     },
 
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }

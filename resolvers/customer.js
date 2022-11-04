@@ -3,7 +3,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   Customer: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   Mutation: {
-    async createCustomer (parent, args, context, info) {
+    async createCustomer (parent, args, ctx, info) {
       const { input } = args
 
       const res = await store.post('/customers', { ...input })
@@ -21,8 +21,8 @@ module.exports = {
       return res.data.customer
     },
 
-    async createShippingAddress (parent, args, context, info) {
-      const auth = context.request.headers.get('x-api-key')
+    async createShippingAddress (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
       const { input } = args
 
       if (input.metadata) {
@@ -42,8 +42,8 @@ module.exports = {
       return res.data.customer
     },
 
-    async deleteShippingAddress (parent, args, context, info) {
-      const auth = context.request.headers.get('x-api-key')
+    async deleteShippingAddress (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
       const { input } = args
 
       const res = await store.delete(`/customers/me/addresses/${input.id}`, {
@@ -55,7 +55,7 @@ module.exports = {
       return (await res).data.customer
     },
 
-    async storeResetPassword (parent, args, context, info) {
+    async storeResetPassword (parent, args, ctx, info) {
       const { input } = args
 
       const res = await store.post('/customers/password-reset', { ...input })
@@ -63,7 +63,7 @@ module.exports = {
       return res.data.customer
     },
 
-    async storeResetPasswordToken (parent, args, context, info) {
+    async storeResetPasswordToken (parent, args, ctx, info) {
       const { input } = args
 
       await store.post('/customers/password-token', { ...input })
@@ -71,8 +71,8 @@ module.exports = {
       return { success: true }
     },
 
-    async updateCustomer (parent, args, context, info) {
-      const auth = context.request.headers.get('x-api-key')
+    async updateCustomer (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
       const { input } = args
 
       if (input.metadata) {
@@ -92,8 +92,8 @@ module.exports = {
       return res.data.customer
     },
 
-    async updateShippingAddress (parent, args, context, info) {
-      const auth = context.request.headers.get('x-api-key')
+    async updateShippingAddress (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
       const { input: { id, ...others } } = args
 
       if (others.metadata) {
@@ -115,7 +115,7 @@ module.exports = {
   },
 
   PaymentMethodsResponse: {
-    data: (parent, args, context, info) => {
+    data: (parent, args, ctx, info) => {
       if (parent.data) {
         return JSON.stringify(parent.data)
       }
@@ -125,8 +125,8 @@ module.exports = {
   },
 
   Query: {
-    async getCurrentCustomer (parent, args, context, info) {
-      const auth = context.request.headers.get('x-api-key')
+    async getCurrentCustomer (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
 
       const res = await store.get('/auth', {
         headers: {
@@ -137,8 +137,8 @@ module.exports = {
       return res.data.customer
     },
 
-    async getPaymentMethods (parent, args, context, info) {
-      const auth = context.request.headers.get('x-api-key')
+    async getPaymentMethods (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
 
       const res = await store.get('/customers/me/payment-methods', {
         headers: {

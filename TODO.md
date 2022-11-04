@@ -93,8 +93,8 @@ Schema implemented. However, a data generation issue remains | [Relevant Issue](
 
 ### Swap
 
-- [ ] Create a Swap
-- [ ] Get by Cart Id
+- [x] Create a Swap
+- [x] Get by Cart Id
 
 ## Admin
 

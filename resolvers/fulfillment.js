@@ -1,6 +1,6 @@
 module.exports = {
   Fulfillment: {
-    data: (parent, args, context, info) => {
+    data: (parent, args, ctx, info) => {
       if (parent.data) {
         return JSON.stringify(parent.data)
       }
@@ -8,7 +8,7 @@ module.exports = {
       return null
     },
 
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }

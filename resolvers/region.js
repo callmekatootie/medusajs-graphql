@@ -3,7 +3,7 @@ const { store, admin } = require('../common/axios')
 
 module.exports = {
   Query: {
-    async getRegion (parent, args, context, info) {
+    async getRegion (parent, args, ctx, info) {
       const { id } = args
 
       const res = await store.get(`/regions/${id}`)
@@ -11,7 +11,7 @@ module.exports = {
       return res.data.region
     },
 
-    async listRegions (parent, args, context, info) {
+    async listRegions (parent, args, ctx, info) {
       if (args.createdAt || args.updatedAt) {
         throw new GraphQLYogaError('created_at or updated_at filter properties are not yet supported')
       }
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   Region: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -52,7 +52,7 @@ module.exports = {
   },
 
   Mutation: {
-    async addCountry (parent, args, context, info) {
+    async addCountry (parent, args, ctx, info) {
       const { input: { id, ...others } } = args
 
       const res = await admin.post(`/regions/${id}/countries`, { ...others })

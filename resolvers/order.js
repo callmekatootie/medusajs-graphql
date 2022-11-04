@@ -14,7 +14,7 @@ module.exports = {
   },
 
   Order: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   Query: {
-    async getOrder (parent, args, context, info) {
+    async getOrder (parent, args, ctx, info) {
       const { id } = args
 
       const res = await store.get(`/orders/${id}`)
@@ -50,7 +50,7 @@ module.exports = {
       return res.data.order
     },
 
-    async getOrderByCartId (parent, args, context, info) {
+    async getOrderByCartId (parent, args, ctx, info) {
       const { cart_id: id } = args
 
       const res = await store.get(`/orders/cart/${id}`)
@@ -58,7 +58,7 @@ module.exports = {
       return res.data.order
     },
 
-    async getOrderByLookup (parent, args, context, info) {
+    async getOrderByLookup (parent, args, ctx, info) {
       const res = await store.get('/orders', { params: { ...args } })
 
       return res.data.order

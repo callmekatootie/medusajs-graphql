@@ -2,7 +2,7 @@ const { store } = require('../common/axios')
 
 module.exports = {
   GiftCard: {
-    metadata: (parent, args, context, info) => {
+    metadata: (parent, args, ctx, info) => {
       if (parent.metadata) {
         return JSON.stringify(parent.metadata)
       }
@@ -10,7 +10,7 @@ module.exports = {
       return null
     },
 
-    region: async (parent, args, context, info) => {
+    region: async (parent, args, ctx, info) => {
       if (parent.region_id) {
         const res = await store.get(`/regions/${parent.region_id}`)
 
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   Query: {
-    async getGitCardByCode (parent, args, context, info) {
+    async getGitCardByCode (parent, args, ctx, info) {
       const { code } = args
 
       const res = await store.get(`/gift-cards/${code}`)
