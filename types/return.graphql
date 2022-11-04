@@ -5,6 +5,27 @@ enum ReturnStatus {
   REQUIRESACTION
 }
 
+input CreateReturnInput {
+  items: [CreateReturnItemsInput!]!
+  order_id: ID!
+  return_shipping: CreateReturnReturnShippingInput
+}
+
+input CreateReturnItemsInput {
+  item_id: ID!
+  note: String
+  reason_id: ID
+  quantity: Int!
+}
+
+input CreateReturnReturnShippingInput {
+  option_id: ID!
+}
+
+type Mutation {
+  createReturn(input: CreateReturnInput): Return
+}
+
 type Return {
   id: ID!
   claim_order_id: ID
