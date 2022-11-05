@@ -9,21 +9,21 @@
 
 ### Cart
 
-- [ ] Add a Shipping Method
+- [x] Add a Shipping Method
 - [x] Calculate Cart Taxes
-- [ ] Complete a Cart
+- [x] Complete a Cart
 - [x] Create a Cart
-- [ ] Add a Line Item
-- [ ] Create Payment Sessions
-- [ ] Remove Discount
-- [ ] Delete a Line Item
-- [ ] Update a Line Item
-- [ ] Delete a Payment Session
-- [ ] Update a Payment Session
+- [x] Add a Line Item
+- [x] Create Payment Sessions
+- [x] Remove Discount
+- [x] Delete a Line Item
+- [x] Update a Line Item
+- [x] Delete a Payment Session
+- [x] Update a Payment Session
 - [x] Get a Cart
-- [ ] Update a Cart
-- [ ] Refresh a Payment Session
-- [ ] Select a Payment Session
+- [x] Update a Cart
+- [x] Refresh a Payment Session
+- [x] Select a Payment Session
 
 ### Collection
 

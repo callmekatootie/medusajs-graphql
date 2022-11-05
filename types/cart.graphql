@@ -1,9 +1,51 @@
 enum CartType {
   CLAIM
   DEFAULT
-  DRAFT_ORDER
-  PAYMENT_LINK
+  DRAFTORDER
+  PAYMENTLINK
   SWAP
+}
+
+enum CompleteCartType {
+  CART
+  ORDER
+  SWAP
+}
+
+input AddLineItemInput {
+  id: ID!
+  metadata: String
+  quantity: Int!
+  variant_id: ID!
+}
+
+input AddressInput {
+  id: ID
+  address_1: String
+  address_2: String
+  city: String
+  company: String
+  country_code: String
+  created_at: String
+  customer_id: ID
+  deleted_at: String
+  first_name: String
+  last_name: String
+  metadata: String
+  phone: String
+  postal_code: String
+  province: String
+  updated_at: String
+}
+
+input AddShippingMethodInput {
+  id: ID!
+  option_id: ID!
+  data: String
+}
+
+input CompleteCartInput {
+  id: ID!
 }
 
 input CreateCartInput {
@@ -19,15 +61,69 @@ input CreateCartItemsInput {
   quantity: Int
 }
 
+input CreatePaymentSessionsInput {
+  id: ID!
+}
+
+input DeleteLineItemInput {
+  id: ID!
+  line_id: ID!
+}
+
+input DeletePaymentSessionInput {
+  id: ID!
+  provider_id: ID!
+}
+
+input RefreshPaymentSessionInput {
+  id: ID!
+  provider_id: ID!
+}
+
+input RemoveDiscountInput {
+  id: ID!
+  code: String!
+}
+
+input SelectPaymentSessionInput {
+  id: ID!
+  provider_id: ID!
+}
+
+input UpdateCartInput {
+  id: ID!
+  billing_address: AddressInput
+  context: String
+  country_code: String
+  customer_id: ID
+  discounts: [String!]
+  email: String
+  gift_cards: [String!]
+  region_id: ID
+  sales_channel_id: ID
+  shipping_address: AddressInput
+}
+
+input UpdateLineItemInput {
+  id: ID!
+  line_id: ID!
+  quantity: Int!
+}
+
+input UpdatePaymentSessionInput {
+  id: ID!
+  provider_id: ID!
+  data: String!
+}
+
 type Cart {
   id: ID!
-  # TODO
-  # billing_address: Address
   billing_address_id: ID
+  billing_address: Address
   completed_at: String
   context: String
-  customer: Customer
   customer_id: ID
+  customer: Customer
   discount_total: Float
   discounts: [Discount!]!
   email: String
@@ -35,37 +131,51 @@ type Cart {
   gift_card_total: Float
   gift_cards: [GiftCard!]!
   idempotency_key: String
+  items: [LineItem!]!
   item_tax_total: Float
-  # TODO
-  # items: [LineItem!]!
   metadata: String
-  # TODO
-  # payment: Payment
   payment_authorized_at: String
   payment_id: ID
-  # TODO
-  # payment_session: PaymentSession
-  region: Region
+  payment: Payment
+  payment_session: PaymentSession
+  payment_sessions: [PaymentSession!]!
   region_id: ID
+  region: Region
   refundable_amount: Float
   refunded_total: Float
   sales_channel: SalesChannel
   sales_channel_id: ID
-  shipping_address: Address
   shipping_addess_id: ID
-  # TODO
-  # shipping_methods: [ShippingMethod!]!
+  shipping_address: Address
+  shipping_methods: [ShippingMethod!]!
   shipping_tax_total: Float
   shipping_total: Float
-  sub_total: Float
+  subtotal: Float
   tax_total: Float
   total: Float
   type: CartType
 }
 
+type CompleteCartResponse {
+  type: CompleteCartType
+  data: String
+}
+
 type Mutation {
+  addLineItem(input: AddLineItemInput): Cart
+  addShippingMethod(input: AddShippingMethodInput): Cart
   calculateCartTaxes(id: ID!): Cart
+  completeCart(input: CompleteCartInput): CompleteCartResponse
   createCart(input: CreateCartInput): Cart
+  createPaymentSessions(input: CreatePaymentSessionsInput): Cart
+  deleteLineItem(input: DeleteLineItemInput): Cart
+  deletePaymentSession(input: DeletePaymentSessionInput): Cart
+  refreshPaymentSession(input: RefreshPaymentSessionInput): Cart
+  removeDiscount(input: RemoveDiscountInput): Cart
+  selectPaymentSession(input: SelectPaymentSessionInput): Cart
+  updateCart(input: UpdateCartInput): Cart
+  updateLineItem(input: UpdateLineItemInput): Cart
+  updatePaymentSession(input: UpdatePaymentSessionInput): Cart
 }
 
 type Query {
