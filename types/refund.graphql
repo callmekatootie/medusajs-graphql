@@ -1,0 +1,12 @@
+type Refund {
+  id: ID!
+  amount: Float!
+  idempotency_key: String
+  metadata: String
+  note: String
+  order_id: ID!
+  order: Order
+  payment_id: ID
+  payment: Payment
+  reason: String
+}

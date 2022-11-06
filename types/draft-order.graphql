@@ -1,0 +1,19 @@
+enum DraftOrderStatus {
+  COMPLETED
+  OPEN
+}
+
+type DraftOrder {
+  id: ID!
+  canceled_at: String
+  cart_id: ID
+  cart: Cart
+  completed_at: String
+  display_id: ID
+  idempotency_key: String
+  metadata: String
+  no_notification_order: Boolean
+  order_id: ID
+  order: Order
+  status: DraftOrderStatus
+}

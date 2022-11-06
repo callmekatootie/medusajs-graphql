@@ -58,7 +58,7 @@ module.exports = {
       return res.data.order
     },
 
-    async getOrderByLookup (parent, args, ctx, info) {
+    async lookupOrder (parent, args, ctx, info) {
       const res = await store.get('/orders', { params: { ...args } })
 
       return res.data.order

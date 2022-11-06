@@ -48,8 +48,7 @@ input CreateCustomerInput {
 }
 
 input UpdateCustomerInput {
-  # TODO
-  # billing_address: AddressInput
+  billing_address: UpdateCustomerBillingAddressInput
   email: String
   first_name: String
   last_name: String
@@ -70,6 +69,20 @@ input ResetPasswordInput {
 
 input ResetPasswordTokenInput {
   email: String!
+}
+
+input UpdateCustomerBillingAddressInput {
+  address_1: String
+  address_2: String
+  city: String
+  company: String
+  country_code: String
+  first_name: String
+  last_name: String
+  metadata: String
+  phone: String
+  postal_code: String
+  province: String
 }
 
 input UpdateShippingAddressInput {
@@ -107,5 +120,24 @@ type Mutation {
 type Query {
   getCurrentCustomer: Customer
   getPaymentMethods: [PaymentMethodsResponse!]!
-  listOrders: [ListOrdersResponse!]!
+  listOrders(
+    cart_id: ID
+    canceled_at: DateComparison
+    created_at: DateComparison
+    currency_code: String
+    display_id: ID
+    email: String
+    expand: String
+    fields: String
+    fulfillment_status: [String!]
+    limit: Int
+    id: ID
+    offset: Int
+    payment_status: [String!]
+    q: String
+    region_id: ID
+    status: [String!]
+    tax_rate: String
+    updated_at: DateComparison
+  ): [ListOrdersResponse!]!
 }

@@ -1,0 +1,11 @@
+type GiftCardTransaction {
+  id: ID!
+  amount: Float!
+  created_at: String
+  gift_card_id: ID!
+  gift_card: GiftCard
+  is_taxable: Boolean
+  order_id: ID
+  order: Order
+  tax_rate: Float
+}

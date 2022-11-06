@@ -152,6 +152,12 @@ module.exports = {
     async listOrders (parent, args, ctx, info) {
       const auth = ctx.request.headers.get('x-api-key')
 
+      const { canceled_at: canceledAt, created_at: createdAt, updated_at: updatedAt } = args
+
+      if (canceledAt || createdAt || updatedAt) {
+        throw new GraphQLYogaError('canceled_at, created_at and updatedat is not yet supported')
+      }
+
       const res = await store.get('/customers/me/orders', {
         headers: {
           Cookie: `connect.sid=${auth}`

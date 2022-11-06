@@ -34,63 +34,52 @@ input ShippingAddressQuery {
 
 type Order {
   id: ID!
-  billing_address: Address
   billing_address_id: ID
+  billing_address: Address
   canceled_at: String
-  # TODO
-  # cart: Cart
   cart_id: ID
-  # TODO
-  # claims: [ClaimOrder!]!
+  cart: Cart
+  claims: [ClaimOrder!]!
+  currency_code: String!
   currency: Currency
-  currency_code: String
+  customer_id: ID!
   customer: Customer
-  customer_id: ID
   discounts: [Discount!]!
   discount_total: Float
-  display_id: Int
-  # TODO
-  # draft_order: DraftOrder
+  display_id: ID
   draft_order_id: ID
+  draft_order: DraftOrder
   edits: [OrderEdit!]!
-  email: String
+  email: String!
   external_id: String
-  # TODO
-  # fulfillments: [Fulfillment!]!
+  fulfillments: [Fulfillment!]!
   fulfillment_status: FulfillmentStatus
   gift_cards: [GiftCard!]!
   gift_card_tax_total: Float
   gift_card_total: Float
-  # TODO
-  # gift_card_transactions: [GiftCardTransaction!]!
+  gift_card_transactions: [GiftCardTransaction!]!
   idempotency_key: String
-  # TODO
-  # items: [LineItem!]!
+  items: [LineItem!]!
   metadata: String
   no_notification: Boolean
   paid_total: Float
-  # TODO
-  # payments: [Payment!]!
+  payments: [Payment!]!
   payment_status: PaymentStatus
+  region_id: ID!
   region: Region
-  region_id: ID
   refundable_amount: Float
   refunded_total: Float
-  # TODO
-  # refunds: [Refund!]!
-  # TODO
-  # returns: [Return!]!
-  sales_channel: SalesChannel
+  refunds: [Refund!]!
+  returns: [Return!]!
   sales_channel_id: ID
-  shipping_address: Address
+  sales_channel: SalesChannel
   shipping_address_id: ID
-  # TODO
-  # shipping_methods: [ShippingMethod!]!
+  shipping_address: Address
+  shipping_methods: [ShippingMethod!]!
   shipping_total: Float
   status: OrderStatus
-  sub_total: Float
-  # TODO
-  # swaps: [Swap!]!
+  subtotal: Float
+  swaps: [Swap!]!
   tax_rate: Float
   tax_total: Float
   total: Float
@@ -99,5 +88,5 @@ type Order {
 type Query {
   getOrder(id: ID!): Order
   getOrderByCartId(cart_id: ID!): Order
-  getOrderByLookup(display_id: Int!, email: String!, shipping_address: ShippingAddressQuery): Order
+  lookupOrder(display_id: Int!, email: String!, shipping_address: ShippingAddressQuery): Order
 }

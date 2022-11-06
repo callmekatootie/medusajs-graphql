@@ -39,7 +39,7 @@
 - [x] Get a Customer
 - [x] Update Customer
 - [x] Get Payment Methods
-- [ ] List Orders // TODO
+- [x] List Orders
 - [x] Request Password Reset
 - [x] Reset Password
 
