@@ -21,7 +21,7 @@ module.exports = {
       return res.data.customer
     },
 
-    async createShippingAddress (parent, args, ctx, info) {
+    async addShippingAddress (parent, args, ctx, info) {
       const auth = ctx.request.headers.get('x-api-key')
       const { input } = args
 
@@ -55,7 +55,7 @@ module.exports = {
       return (await res).data.customer
     },
 
-    async storeResetPassword (parent, args, ctx, info) {
+    async resetPassword (parent, args, ctx, info) {
       const { input } = args
 
       const res = await store.post('/customers/password-reset', { ...input })
@@ -63,7 +63,7 @@ module.exports = {
       return res.data.customer
     },
 
-    async storeResetPasswordToken (parent, args, ctx, info) {
+    async requestPasswordReset (parent, args, ctx, info) {
       const { input } = args
 
       await store.post('/customers/password-token', { ...input })
@@ -147,6 +147,18 @@ module.exports = {
       })
 
       return res.data.payment_methods
+    },
+
+    async listOrders (parent, args, ctx, info) {
+      const auth = ctx.request.headers.get('x-api-key')
+
+      const res = await store.get('/customers/me/orders', {
+        headers: {
+          Cookie: `connect.sid=${auth}`
+        }
+      })
+
+      return res.data
     }
   }
 }

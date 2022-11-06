@@ -8,9 +8,9 @@ type GiftCard {
   is_disabled: Boolean
   metadata: String
   order_id: ID
-  # TODO
-  # order: Order
+  order: Order
   value: Int!
+  region_id: ID
   region: Region
   updated_at: String
 }

@@ -1,17 +1,16 @@
 type Customer {
   id: ID!
-  # TODO - Implement once Billing address gets defined
-  # billing_address: BillingAddress
   billing_address_id: ID
+  billing_address: Address
   created_at: String
   deleted_at: String
   email: String!
   first_name: String!
+  groups: [CustomerGroup!]!
   has_account: Boolean
   last_name: String!
   metadata: String
-  # TODO - Implement once Order gets defined
-  # orders: [Order!]!
+  orders: [Order!]!
   phone: String
   shipping_addresses: [Address!]!
   updated_at: String
@@ -88,12 +87,19 @@ input UpdateShippingAddressInput {
   province: String
 }
 
+type ListOrdersResponse {
+  count: Int
+  limit: Int
+  offset: Int
+  orders: [Order!]!
+}
+
 type Mutation {
   createCustomer(input: CreateCustomerInput): Customer
-  createShippingAddress(input: AddShippingAddressInput): Customer
+  addShippingAddress(input: AddShippingAddressInput): Customer
   deleteShippingAddress(input: DeleteShippingAddressInput): Customer
-  storeResetPassword(input: ResetPasswordInput): Customer
-  storeResetPasswordToken(input: ResetPasswordTokenInput): NoContentResponse
+  resetPassword(input: ResetPasswordInput): Customer
+  requestPasswordReset(input: ResetPasswordTokenInput): NoContentResponse
   updateCustomer(input: UpdateCustomerInput): Customer
   updateShippingAddress(input: UpdateShippingAddressInput): Customer
 }
@@ -101,6 +107,5 @@ type Mutation {
 type Query {
   getCurrentCustomer: Customer
   getPaymentMethods: [PaymentMethodsResponse!]!
-  # TODO
-  # listOrders: [Order!]!
+  listOrders: [ListOrdersResponse!]!
 }

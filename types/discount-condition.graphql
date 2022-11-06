@@ -19,7 +19,7 @@ type DiscountCondition {
   metadata: String
   operator: DiscountConditionOperator
   products: [Product!]!
-  product_collections: [Collection!]!
+  product_collections: [ProductCollection!]!
   product_tags: [ProductTag!]!
   product_types: [ProductType!]!
   type: DiscountConditionType
